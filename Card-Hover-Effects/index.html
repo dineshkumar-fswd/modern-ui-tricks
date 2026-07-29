@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern UI Card Hover Effects</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 class="page-title">
+        Modern UI Card <span class="gradient-text">Hover Effects</span>
+      </h1>
+      <p class="page-subtitle">
+        5 Stylish CSS Card Hover Effects — No JavaScript, No Frameworks
+      </p>
+      <div class="title-underline"></div>
+    </header>
+
+    <main class="card-grid">
+      <!-- 01 : 3D LIFT CARD -->
+      <article class="card card--lift">
+        <span class="card-number">01</span>
+        <span class="card-icon icon-purple">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="white"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="3 17 9 11 13 15 21 6"></polyline>
+            <polyline points="14 6 21 6 21 13"></polyline>
+          </svg>
+        </span>
+        <div class="card-media scene-sunrise" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="sky-glow"></div>
+          <div class="mountain mountain-back"></div>
+          <div class="mountain mountain-front"></div>
+          <div class="cloud cloud-1"></div>
+          <div class="cloud cloud-2"></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">3D Lift Card</h3>
+          <p class="card-desc">
+            Smooth 3D lift effect with shadow and translate on hover.
+          </p>
+          <button class="view-code view-code--purple">VIEW CODE</button>
+        </div>
+      </article>
+
+      <!-- 02 : GLASSMORPHISM CARD -->
+      <article class="card card--glass">
+        <span class="card-number">02</span>
+        <span class="card-icon icon-blue">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+            <path
+              d="M12 2C12 2 5 10.5 5 15.5C5 19.09 8.13 22 12 22C15.87 22 19 19.09 19 15.5C19 10.5 12 2 12 2Z"
+            />
+          </svg>
+        </span>
+        <div class="card-media scene-leaves" aria-hidden="true">
+          <div class="leaf leaf-1"></div>
+          <div class="leaf leaf-2"></div>
+          <div class="leaf leaf-3"></div>
+          <div class="droplet d1"></div>
+          <div class="droplet d2"></div>
+          <div class="droplet d3"></div>
+          <div class="glass-overlay"></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Glassmorphism Card</h3>
+          <p class="card-desc">
+            Glassmorphism effect with blur and transparent styling.
+          </p>
+          <button class="view-code view-code--blue">VIEW CODE</button>
+        </div>
+      </article>
+
+      <!-- 03 : GRADIENT BORDER CARD -->
+      <article class="card card--gradient-border">
+        <span class="card-number">03</span>
+        <span class="card-icon icon-sunset">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+            <circle cx="13.5" cy="6.5" r="2.5" />
+            <circle cx="19" cy="12" r="2" />
+            <circle cx="6" cy="10" r="2" />
+            <circle cx="8" cy="17" r="2" />
+            <path
+              d="M12 2a10 10 0 1 0 9.54 13"
+              fill="none"
+              stroke="white"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <div class="border-spin" aria-hidden="true"></div>
+        <div class="card-media scene-night-mountain" aria-hidden="true">
+          <div class="stars"></div>
+          <div class="night-mountain nm-back"></div>
+          <div class="night-mountain nm-front"></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Gradient Border Card</h3>
+          <p class="card-desc">Animated gradient border that flows on hover.</p>
+          <button class="view-code view-code--rainbow">VIEW CODE</button>
+        </div>
+      </article>
+
+      <!-- 04 : IMAGE ZOOM CARD -->
+      <article class="card card--zoom">
+        <span class="card-number">04</span>
+        <span class="card-icon icon-green">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="white"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 2v4H2M2 6h4M18 22v-4h4M22 18h-4" />
+            <path d="M2 2l6 6M22 22l-6-6" />
+          </svg>
+        </span>
+        <div class="card-media-wrap">
+          <div class="card-media scene-lake" aria-hidden="true">
+            <div class="lake-sky"></div>
+            <div class="lake-mountain"></div>
+            <div class="lake-water"></div>
+            <div class="dock"></div>
+            <div class="boat"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Image Zoom Card</h3>
+          <p class="card-desc">
+            Image zooms in smoothly with a scale transition.
+          </p>
+          <button class="view-code view-code--green">VIEW CODE</button>
+        </div>
+      </article>
+
+      <!-- 05 : GLOW SHADOW CARD -->
+      <article class="card card--glow">
+        <span class="card-number">05</span>
+        <span class="card-icon icon-pink">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+            <polygon points="13 2 3 14 11 14 9 22 21 10 13 10 13 2" />
+          </svg>
+        </span>
+        <div class="card-media scene-lighthouse" aria-hidden="true">
+          <div class="lh-sky"></div>
+          <div class="lh-beam"></div>
+          <div class="lh-rock"></div>
+          <div class="lighthouse">
+            <div class="lh-light"></div>
+            <div class="lh-tower"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Glow Shadow Card</h3>
+          <p class="card-desc">
+            Soft glow shadow around the card that intensifies on hover.
+          </p>
+          <button class="view-code view-code--pink">VIEW CODE</button>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

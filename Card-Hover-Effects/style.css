@@ -1,0 +1,450 @@
+/* ============================================
+   Modern UI Card Hover Effects — pure CSS demo
+   ============================================ */
+
+:root{
+  --bg:            #08081a;
+  --bg-soft:       #0d0d24;
+  --card-bg:       #12122b;
+  --text-main:     #f3f3fb;
+  --text-muted:    #a3a3c2;
+
+  --purple:  #8b5cf6;
+  --blue:    #38bdf8;
+  --orange:  #fb7185;
+  --yellow:  #fbbf24;
+  --green:   #34d399;
+  --pink:    #ec4899;
+
+  --radius: 18px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(139,92,246,0.16), transparent 60%),
+    radial-gradient(ellipse 900px 500px at 85% 0%, rgba(56,189,248,0.14), transparent 60%),
+    var(--bg);
+  color: var(--text-main);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  padding: 64px 24px 40px;
+}
+
+/* ---------- Header ---------- */
+.page-header{
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 56px;
+}
+.page-title{
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-weight: 800;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+}
+.gradient-text{
+  background: linear-gradient(90deg, #a78bfa, #60a5fa 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.page-subtitle{
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0 0 22px;
+}
+.title-underline{
+  width: 120px;
+  height: 4px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--pink), var(--blue));
+}
+
+/* ---------- Grid ---------- */
+.card-grid{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.card--zoom  { grid-column: span 3 / span 3; max-width: 620px; }
+.card--glow  { grid-column: span 3 / span 3; max-width: 620px; }
+
+@media (min-width: 860px){
+  .card-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .card--zoom{ grid-column: 1 / span 2; justify-self: end; width: 100%; max-width: none;}
+  .card--glow{ grid-column: 2 / span 2; justify-self: start; width: 100%; max-width: none;}
+}
+
+@media (max-width: 640px){
+  .card-grid{ grid-template-columns: 1fr; }
+  .card--zoom, .card--glow{ grid-column: auto; max-width: 480px; margin: 0 auto; }
+}
+
+/* ---------- Card base ---------- */
+.card{
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease;
+  isolation: isolate;
+}
+
+.card-number{
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 5;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 5px 11px;
+  border-radius: 8px;
+}
+
+.card-icon{
+  position: absolute;
+  top: 16px; left: 16px;
+  z-index: 5;
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.icon-purple{ background: linear-gradient(135deg, #a855f7, #7c3aed); }
+.icon-blue{   background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+.icon-sunset{ background: linear-gradient(135deg, #fb923c, #f43f5e); }
+.icon-green{  background: linear-gradient(135deg, #34d399, #059669); }
+.icon-pink{   background: linear-gradient(135deg, #f472b6, #db2777); }
+
+.card-media{
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: #0a0a18;
+}
+
+.card-body{
+  padding: 20px 22px 22px;
+}
+.card-title{
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.card-desc{
+  margin: 0 0 18px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  min-height: 42px;
+}
+
+.view-code{
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+  background: transparent;
+  border-radius: 9px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+.view-code:hover{ transform: translateY(-2px); }
+.view-code--purple{ border: 1.5px solid var(--purple); }
+.view-code--purple:hover{ background: var(--purple); }
+.view-code--blue{ border: 1.5px solid var(--blue); }
+.view-code--blue:hover{ background: var(--blue); color:#04202e; }
+.view-code--rainbow{ border: 1.5px solid var(--orange); }
+.view-code--rainbow:hover{ background: var(--orange); color:#2a0a0a; }
+.view-code--green{ border: 1.5px solid var(--green); }
+.view-code--green:hover{ background: var(--green); color:#04241a; }
+.view-code--pink{ border: 1.5px solid var(--pink); }
+.view-code--pink:hover{ background: var(--pink); }
+
+/* ============================================
+   EFFECT 1 — 3D LIFT CARD
+   ============================================ */
+.card--lift{
+  border: 1px solid rgba(139,92,246,0.35);
+}
+.card--lift:hover{
+  transform: translateY(-14px) scale(1.015);
+  box-shadow: 0 30px 60px -15px rgba(139,92,246,0.45);
+  border-color: rgba(139,92,246,0.7);
+}
+
+.scene-sunrise{
+  background: linear-gradient(180deg, #2b1a3d 0%, #6b3b52 38%, #b96a4b 60%, #e0a252 78%, #f3c26a 100%);
+}
+.scene-sunrise .sun{
+  position:absolute; left:50%; top:58%; width:120px; height:120px;
+  background: radial-gradient(circle, #ffe9b0 0%, #ffb457 55%, rgba(255,180,87,0) 75%);
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+}
+.scene-sunrise .sky-glow{
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse 300px 140px at 50% 55%, rgba(255,210,150,0.55), transparent 70%);
+}
+.scene-sunrise .mountain{
+  position:absolute; left:0; right:0; bottom:0;
+}
+.mountain-back{
+  height: 62%;
+  background: #241a2e;
+  clip-path: polygon(0% 100%, 8% 55%, 22% 78%, 38% 40%, 55% 70%, 70% 30%, 85% 62%, 100% 45%, 100% 100%);
+  opacity: .8;
+}
+.mountain-front{
+  height: 46%;
+  background: linear-gradient(160deg, #1a1420, #3a2a30);
+  clip-path: polygon(0% 100%, 12% 45%, 30% 75%, 48% 20%, 62% 58%, 78% 15%, 92% 50%, 100% 30%, 100% 100%);
+}
+.scene-sunrise .cloud{
+  position:absolute; height: 14px; border-radius: 20px;
+  background: rgba(255,255,255,0.18);
+}
+.cloud-1{ width: 90px; top: 22%; left: 8%; }
+.cloud-2{ width: 60px; top: 34%; right: 15%; background: rgba(255,255,255,0.12);}
+
+/* ============================================
+   EFFECT 2 — GLASSMORPHISM CARD
+   ============================================ */
+.card--glass{
+  border: 1px solid rgba(56,189,248,0.3);
+}
+.card--glass:hover{
+  border-color: rgba(56,189,248,0.7);
+  box-shadow: 0 20px 45px -15px rgba(56,189,248,0.35);
+}
+
+.scene-leaves{
+  background: radial-gradient(ellipse at 30% 20%, #22364d, #0d1626 70%);
+}
+.leaf{
+  position:absolute;
+  background: linear-gradient(135deg, #4c3d78, #2a2350);
+  border-radius: 0 70% 0 70%;
+}
+.leaf-1{ width:150px; height:110px; top:35%; left:15%; transform: rotate(15deg);}
+.leaf-2{ width:120px; height:90px; top:10%; left:45%; transform: rotate(-25deg); background: linear-gradient(135deg,#5b4a8c,#332a5c);}
+.leaf-3{ width:100px; height:80px; top:55%; left:60%; transform: rotate(50deg); background: linear-gradient(135deg,#443868,#241f42);}
+.droplet{
+  position:absolute; width:8px; height:10px; border-radius:50% 50% 50% 0;
+  background: rgba(180,210,255,0.65);
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(150,190,255,0.4);
+}
+.d1{ top: 42%; left: 25%; }
+.d2{ top: 18%; left: 52%; }
+.d3{ top: 60%; left: 66%; }
+
+.glass-overlay{
+  position:absolute; inset:0;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(0px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  transition: backdrop-filter .5s ease, background .5s ease;
+}
+.card--glass:hover .glass-overlay{
+  backdrop-filter: blur(3px);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================================
+   EFFECT 3 — GRADIENT BORDER CARD
+   ============================================ */
+.card--gradient-border{
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2px;
+}
+.border-spin{
+  position:absolute; inset:0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: conic-gradient(from 0deg, var(--pink), var(--orange), var(--yellow), var(--blue), var(--purple), var(--pink));
+  opacity: 0;
+  transition: opacity .4s ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-border 4s linear infinite paused;
+  z-index: 4;
+  pointer-events: none;
+}
+.card--gradient-border:hover .border-spin{
+  opacity: 1;
+  animation-play-state: running;
+}
+.card--gradient-border:hover{
+  transform: translateY(-4px);
+}
+@keyframes spin-border{
+  to{ transform: rotate(360deg); }
+}
+
+.scene-night-mountain{
+  background: linear-gradient(180deg, #1a1030 0%, #2c1740 55%, #4a1f4d 100%);
+}
+.scene-night-mountain .stars{
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 20%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 60% 10%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 35% 35%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 90% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 45%, #fff, transparent);
+  opacity: .8;
+}
+.night-mountain{ position:absolute; left:0; right:0; bottom:0; }
+.nm-back{
+  height: 55%;
+  background: #3a2050;
+  clip-path: polygon(0% 100%, 15% 50%, 30% 80%, 50% 35%, 68% 65%, 85% 25%, 100% 55%, 100% 100%);
+  opacity:.7;
+}
+.nm-front{
+  height: 40%;
+  background: linear-gradient(160deg,#241333,#3d1f45);
+  clip-path: polygon(0% 100%, 10% 40%, 28% 70%, 45% 15%, 60% 55%, 78% 10%, 95% 45%, 100% 25%, 100% 100%);
+}
+
+/* ============================================
+   EFFECT 4 — IMAGE ZOOM CARD
+   ============================================ */
+.card--zoom{
+  border: 1px solid rgba(52,211,153,0.3);
+}
+.card--zoom:hover{
+  border-color: rgba(52,211,153,0.6);
+  box-shadow: 0 20px 45px -15px rgba(52,211,153,0.3);
+}
+.card-media-wrap{
+  overflow: hidden;
+}
+.scene-lake{
+  transition: transform .6s ease;
+  transform: scale(1);
+}
+.card--zoom:hover .scene-lake{
+  transform: scale(1.12);
+}
+.scene-lake{ background: #0d1e1c; }
+.lake-sky{
+  position:absolute; inset:0; height: 55%;
+  background: linear-gradient(180deg, #f2c98a 0%, #d98a5a 40%, #4c5b52 100%);
+}
+.lake-mountain{
+  position:absolute; left:0; right:0; top:20%; height:38%;
+  background: #1c2a26;
+  clip-path: polygon(0% 100%, 20% 35%, 40% 70%, 55% 20%, 75% 60%, 100% 40%, 100% 100%);
+  opacity: .85;
+}
+.lake-water{
+  position:absolute; left:0; right:0; bottom:0; top:55%;
+  background: linear-gradient(180deg, #26433c, #0e211d);
+}
+.dock{
+  position:absolute; bottom: 20%; left: 8%; width: 130px; height: 10px;
+  background: linear-gradient(90deg, #6b4a30, #3d2c1c);
+  transform: rotate(-3deg);
+  border-radius: 2px;
+}
+.boat{
+  position:absolute; bottom: 16%; left: 34%; width: 70px; height: 22px;
+  background: linear-gradient(180deg, #3a5048, #223530);
+  border-radius: 0 0 30px 30px;
+}
+.boat::after{
+  content:"";
+  position:absolute; top:-14px; left:20px; width:30px; height:16px;
+  background: #d97757; border-radius: 4px;
+}
+
+/* ============================================
+   EFFECT 5 — GLOW SHADOW CARD
+   ============================================ */
+.card--glow{
+  border: 1px solid rgba(236,72,153,0.35);
+  box-shadow: 0 0 24px rgba(236,72,153,0.15);
+}
+.card--glow:hover{
+  box-shadow: 0 0 55px rgba(236,72,153,0.55), 0 0 100px rgba(236,72,153,0.25);
+  border-color: rgba(236,72,153,0.8);
+}
+
+.scene-lighthouse{ background:#0b0a1c; }
+.lh-sky{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, #1c1030 0%, #3a1a45 45%, #6b2a55 75%, #8a3a5a 100%);
+}
+.lh-beam{
+  position:absolute; left: 30%; top: 15%; width: 3px; height: 55%;
+  background: linear-gradient(180deg, rgba(255,240,200,0.55), transparent);
+  transform: rotate(18deg);
+  filter: blur(1px);
+}
+.lh-rock{
+  position:absolute; left:0; right:0; bottom:0; height: 30%;
+  background: #150e26;
+  clip-path: polygon(0% 100%, 0% 60%, 25% 40%, 45% 65%, 65% 30%, 85% 55%, 100% 35%, 100% 100%);
+}
+.lighthouse{
+  position:absolute; left: 27%; bottom: 22%;
+  width: 22px; height: 70px;
+}
+.lh-tower{
+  position:absolute; bottom:0; left:0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, #e8e4d8 0%, #e8e4d8 55%, #c23b3b 55%, #c23b3b 65%, #e8e4d8 65%);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+}
+.lh-light{
+  position:absolute; top:-10px; left:50%; transform: translateX(-50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: radial-gradient(circle, #fff6d8, #ffcf6b 60%, rgba(255,207,107,0) 75%);
+  box-shadow: 0 0 18px 6px rgba(255,214,120,0.7);
+}
+
+/* ---------- Footer ---------- */
+.page-footer{
+  text-align: center;
+  margin-top: 64px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.page-footer p{ margin: 4px 0; }
+.heart{ color: #f43f5e; }
+.author{
+  background: linear-gradient(90deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+.stack{ font-size: 0.8rem; opacity: .7; }
+
+/* ---------- Accessibility ---------- */
+.view-code:focus-visible,
+.card:focus-visible{
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .card, .view-code, .scene-lake, .border-spin{
+    transition: none !important;
+    animation: none !important;
+  }
+}
